@@ -1,0 +1,486 @@
+{
+    "type": "APL",
+    "version": "1.3",
+    "settings": {},
+    "theme": "light",
+    "import": [],
+    "resources": [],
+    "styles": {},
+    "onMount": [],
+    "graphics": {},
+    "commands": {
+        "BitRefresh": {
+            "parameters": [
+                {
+                    "name": "bitId",
+                    "default": 0
+                }
+            ],
+            "commands": [
+                {
+                    "type": "SetValue",
+                    "componentId": "${bitId}",
+                    "property": "opacity",
+                    "value": "1"
+                }
+            ]
+        },
+        "HitCheck": {
+            "parameters": [
+                {
+                    "name": "page",
+                    "default": 0
+                },
+                {
+                    "name": "bitId",
+                    "default": 0
+                },
+                {
+                    "name": "bitDeg",
+                    "default": 0
+                }
+            ],
+            "commands": [
+                {
+                    "when": "${true}",
+                    "type": "Sequential",
+                    "commands": [
+                        {
+                            "type": "Select",
+                            "commands": [
+                                {
+                                    "when": "${bitDeg >= 170 && bitDeg <= 190}",
+                                    "type": "Sequential",
+                                    "commands": [
+                                        {
+                                            "type": "SetValue",
+                                            "property": "SCORE",
+                                            "value": "${Math.floor(SCORE)+10}"
+                                        },
+                                        {
+                                            "type": "SetValue",
+                                            "property": "INFO",
+                                            "value": "${bitId}"
+                                        },
+                                        {
+                                            "type": "SetValue",
+                                            "componentId": "${bitId}",
+                                            "property": "opacity",
+                                            "value": 0
+                                        }
+                                    ]
+                                },
+                                {
+                                    "when": "${bitDeg == 0 || bitDeg == 360}",
+                                    "type": "Sequential",
+                                    "commands": [
+                                        {
+                                            "type": "SetValue",
+                                            "componentId": "${bitId}",
+                                            "property": "opacity",
+                                            "value": 1
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "layouts": {},
+    "mainTemplate": {
+        "parameters": [
+            "BitData"
+        ],
+        "items": [
+            {
+                "type": "Container",
+                "bind": [
+                    {
+                        "name": "T",
+                        "value": "${elapsedTime/1000}"
+                    },
+                    {
+                        "name": "Td",
+                        "value": "${0}"
+                    },
+                    {
+                        "name": "Ts",
+                        "value": "${elapsedTime/1000-Td}"
+                    },
+                    {
+                        "name": "SCORE",
+                        "value": "${0}"
+                    },
+                    {
+                        "name": "INFO",
+                        "value": "-"
+                    },
+                    {
+                        "name": "TOUCH_BEACON",
+                        "value": "${0}"
+                    }
+                ],
+                "alignItems": "center",
+                "justifyContent": "center",
+                "item": [
+                    {
+                        "type": "Frame",
+                        "id": "bg",
+                        "width": "100vw",
+                        "height": "100vh",
+                        "position": "absolute",
+                        "backgroundColor": "#AAAAAA",
+                        "opacity": 0.8
+                    },
+                    {
+                        "type": "Frame",
+                        "width": "80vh",
+                        "height": "80vh",
+                        "position": "absolute",
+                        "borderColor": "#990000",
+                        "borderRadius": "80vh",
+                        "borderWidth": "1vh"
+                    },
+                    {
+                        "type": "Frame",
+                        "width": "20vh",
+                        "height": "10vh",
+                        "position": "absolute",
+                        "alignSelf": "auto",
+                        "borderColor": "#FF6666",
+                        "borderRadius": "10vh",
+                        "borderWidth": "1vh",
+                        "right": "${50vw+30vh}"
+                    },
+                    {
+                        "type": "TouchWrapper",
+                        "width": "50vh",
+                        "height": "50vh",
+                        "onPress": [
+                                            {
+                                                "type": "SetValue",
+                                                "property": "TOUCH_BEACON",
+                                                "value": "${ TOUCH_BEACON == 0 ? 1 : 0 }"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_1",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_2",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_3",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_4",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_5",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_6",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_7",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_8",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_9",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_10",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_11",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_12",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_13",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_14",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_15",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_16",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_17",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_18",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_19",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_20",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_21",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_22",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                                            },
+                                            {
+                                                "type": "SetPage",
+                                                "componentId": "bit_23",
+                                                "position": "absolute",
+                                                "value": "${TOUCH_BEACON}"
+                            }
+                        ],
+                        "items": [
+                            {
+                                "type": "Frame",
+                                "width": "100%",
+                                "height": "100%",
+                                "backgroundColor": "#AA6666",
+                                "borderColor": "#FF0000",
+                                "items": [
+                                    {
+                                        "type": "Text",
+                                        "width": "100%",
+                                        "height": "100%",
+                                        "text": "PUSH",
+                                        "color": "#FFFFFF",
+                                        "textAlign": "center",
+                                        "textAlignVertical": "center"
+                                    }
+                                ]
+                            }
+                        ],
+                        "position": "absolute",
+                        "right": "0",
+                        "bottom": "0"
+                    },
+                    {
+                        "type": "Container",
+                        "width": "100vw",
+                        "height": "100vh",
+                        "data": "${BitData.sources}",
+                        "alignItems": "center",
+                        "justifyContent": "center",
+                        "items": [
+                            {
+                                "type": "Pager",
+                                "id": "bit_${data.id}",
+                                "bind": [
+                                    {
+                                        "name": "DEGREE",
+                                        "value": "${Math.clamp(0,Ts+2-Math.floor(String.slice(data.D,Math.floor((Ts-data.DL+2)/8)*8,Math.floor((Ts-data.DL+2)/8)*8+8))/1000,4)*(90)}"
+                                    }
+                                ],
+                                "width": "20vh",
+                                "height": "10vh",
+                                "navigation": "none",
+                                "initialPage": 0,
+                                "data": [
+                                    "0",
+                                    "1"
+                                ],
+                                "onPageChanged": [
+                                    {
+                                        "type": "HitCheck",
+                                        "bitId": "bit_${data.id}",
+                                        "bitDeg": "${DEGREE}",
+                                        "page": "${event.source.value}"
+                                    }
+                                ],
+                                "items": [
+                                    {
+                                        "type": "Frame",
+                                        "width": "10vh",
+                                        "height": "10vh",
+                                        "backgroundColor": "${data == \"0\" ? \"#9966CC\" : \"#6666AA\"}",
+                                        "borderRadius": "10vh"
+                                    }
+                                ],
+                                "position": "absolute",
+                                "transform": [
+                                    {
+                                        "rotate": "${DEGREE}"
+                                    },
+                                    {
+                                        "translateX": "40vh"
+                                    },
+                                    {
+                                        "rotate": "${-DEGREE}"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Container",
+                        "width": "100vw",
+                        "height": "100vh",
+                        "item": [
+                            {
+                                "type": "Text",
+                                "width": "100vw",
+                                "height": "10vh",
+                                "text": "lapsed time of skill(T) : ${T}",
+                                "textAlignVertical": "center",
+                                "textAlign": "left"
+                            },
+                            {
+                                "type": "Text",
+                                "id": "debug_Td",
+                                "width": "100vw",
+                                "height": "10vh",
+                                "text": "music delay(Td) : ${Td}",
+                                "textAlignVertical": "center",
+                                "textAlign": "left"
+                            },
+                            {
+                                "type": "Text",
+                                "id": "debug_Ts",
+                                "width": "100vw",
+                                "height": "10vh",
+                                "text": "lapsed time of music(Ts) : ${Ts}",
+                                "textAlignVertical": "center",
+                                "textAlign": "left"
+                            },
+                            {
+                                "type": "Text",
+                                "width": "100vw",
+                                "height": "10vh",
+                                "text": "Score : ${SCORE}",
+                                "textAlignVertical": "center",
+                                "textAlign": "left"
+                            },
+                            {
+                                "type": "Text",
+                                "width": "100vw",
+                                "height": "10vh",
+                                "text": "Hit : ${INFO}",
+                                "textAlignVertical": "center",
+                                "textAlign": "left"
+                            }
+                        ],
+                        "position": "absolute"
+                    },
+                    {
+                        "type": "Video",
+                        "id": "bgm",
+                        "width": "0",
+                        "height": "0",
+                        "audioTrack": "background",
+                        "autoplay": false,
+                        "source": "music.mp4",
+                        "onMount": [
+                            {
+                                "type": "Idle",
+                                "description": "wait until music is ready",
+                                "delay": 3000
+                            },
+                            {
+                                "type": "Parallel",
+                                "commands": [
+                                    {
+                                        "type": "ControlMedia",
+                                        "componentId": "bgm",
+                                        "command": "play"
+                                    },
+                                    {
+                                        "type": "SetValue",
+                                        "componentId": "bg",
+                                        "property": "opacity",
+                                        "value": 1
+                                    },
+                                    {
+                                        "type": "SetValue",
+                                        "description": "adjust hit timing",
+                                        "property": "Td",
+                                        "value": "${T+0.25}"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "SetValue",
+                                "componentId": "debug_Td",
+                                "property": "text",
+                                "value": "music delay(Td) : ${Td}"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

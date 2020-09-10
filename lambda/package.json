@@ -1,0 +1,15 @@
+{
+  "name": "alexa-apl-rythem-game-sample",
+  "version": "1.0.1",
+  "description": "Sample of rythem game implemented in APL 1.3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mokomoko-don",
+  "license": "MIT",
+  "dependencies": {
+    "ask-sdk": "^2.8.0",
+    "aws-sdk": "^2.326.0"
+  }
+}
