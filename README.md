@@ -4,7 +4,7 @@
 
 # ScreenShot
 
-! [screenshot](images/rhythm_640.png)
+! [screenshot](images/rhythm_640.jpg)
 
 # Features
 
