@@ -4,7 +4,7 @@
 
 # ScreenShot
 
-! [screenshot](https://raw.githubusercontent.com/mokomoko-don/alexa-apl-rythem-game-sample/master/images/rhythm_640.jpg)
+![screenshot](https://raw.githubusercontent.com/mokomoko-don/alexa-apl-rythem-game-sample/master/images/rhythm_640.jpg)
 
 # Features
 
